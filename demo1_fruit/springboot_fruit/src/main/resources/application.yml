@@ -1,0 +1,31 @@
+spring:
+  # 项目信息
+  application:
+    name: fruit    # 工程名
+  profiles:
+    active: dev    # 默认为开发环境
+  # 数据库参数
+  datasource:
+    url: jdbc:mysql://localhost/demo1_fruit
+    username: techrice
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    # 阿里 Druid 数据库连接池配置
+    druid:
+      initial-size: 5 #连接池初始化大小
+      min-idle: 10 #最小空闲连接数
+      max-active: 20 #最大连接数
+      web-stat-filter:
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*" #不统计这些请求数据
+      stat-view-servlet: #访问监控网页的登录用户名和密码
+        login-username: druid
+        login-password: druid
+
+server:
+  port: 8088    # 端口，不配置时默认为 8080
+
+# 日志相关配置
+logging:
+  level:
+    root: info    # 根目录（所有），不配置时默认为 info
+    com.example.fruit.mapper: debug    # 配置 Mapper 层的日志等级，可看见生成的 SQL 语句
