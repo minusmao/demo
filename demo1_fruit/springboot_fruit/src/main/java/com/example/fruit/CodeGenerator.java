@@ -13,7 +13,9 @@ import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
  * 描述：MyBatis Plus 的代码生成类
  * 使用：填好配置信息，直接运行，即可生成代码
  * 时间：2021-6-12
- * 注意：采用的 mybatis-plus-generator 的 3.4.1 版本，与 3.5.0 版本不同
+ * 注意1：采用的 mybatis-plus-generator 的 3.4.1 版本，与 3.5.0 版本不同
+ * 注意2：由于没有指定 mapper.xml 生成的位置，所以被自动生成在 com.example.mapper 包的 xml 文件夹下
+ *       但是默认的 mapper.xml 扫描路径为 classpath*:/mapper/** /*.xml，需要自行移动，否则报错
  */
 public class CodeGenerator {
     /* 程序入口 */

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.fruit.mapper.FruitMapper">
-    <!-- 测试 mapper.xml 能否使用，当前文件夹下不能，因为默认的 mapper.xml 扫描路径为 classpath*:/mapper/**/*.xml -->
+    <!-- 测试 mapper.xml 能否使用，当前文件夹下能，因为默认的 mapper.xml 扫描路径为 classpath*:/mapper/**/*.xml -->
     <select id="findByFruitId" parameterType="int" resultType="com.example.fruit.entity.Fruit">
         SELECT * FROM fruit WHERE id = #{id}
     </select>
