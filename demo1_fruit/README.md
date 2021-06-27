@@ -28,30 +28,30 @@
 ### 前端部署（端口：8080）
 
 ```shell
-# step0: 进入目录
-cd ./vue_fruit
-# step1: 加载模块
-npm install
-# step2: 运行项目
-npm run serve
-# step3: 打包项目
-npm run build
+cd ./vue_fruit    # step0: 进入目录
+
+npm install       # step1: 加载模块
+
+npm run serve     # step2: 运行项目
+
+npm run build     # step3: 打包项目
 ```
 
 ### 后端部署（端口：8088）
 
 ```shell
-# step0: 进入目录
-cd ./springboot_fruit
-# step1: 编译项目
-mvn compile
-# step2: 直接使用 Maven 运行
-mvn exec:java -Dexec.mainClass="com.example.fruit.FruitApplication"
-# step3: 打包项目
-mvn package
-# step4: 运行项目
-java -jar fruit-0.0.1-SNAPSHOT.jar
+cd ./springboot_fruit     # step0: 进入目录
+
+mvn compile               # step1: 编译项目
+
+mvn exec:java -Dexec.mainClass="com.example.fruit.FruitApplication"    # step2: 直接使用 Maven 运行
+
+mvn package               # step3: 打包项目
+
+java -jar fruit-0.0.1-SNAPSHOT.jar    # step4: 运行项目
 ```
+
+注：编译和运行可以直接运行 `mvn springboot:run`
 
 ## 4. 注意事项
 
