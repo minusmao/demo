@@ -149,7 +149,7 @@ export default {
       delBtlStatu: true,     // 行内表单 -> 批量删除按钮的使能，默认不使能，当勾选数据后，才使能
       // 表格
       tableData: [],         // 表格展示的数据
-      multipleSelection: [],     // 被选中的数据的 id
+      multipleSelection: [],     // 被选中的数据
       // 分页数据
       total: 0,       // 数据总数
       size: 10,       // 每页的数量

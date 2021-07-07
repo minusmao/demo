@@ -11,7 +11,7 @@ import router from "@/router";
 import Element from "element-ui";    // note: 用于错误弹窗
 
 // note: 统一请求后端的 URL
-// axios.defaults.baseURL = "http://localhost:8088"    // note: 如果还没有搭建后端，端口不同，有跨域问题（后端可以解决），可以先注释掉
+axios.defaults.baseURL = "http://localhost:8088"    // note: 如果还没有搭建后端，端口不同，使用 mock 时有跨域问题（后端可以解决），可以先注释掉
 
 // note: 定义一个 axios 对象
 const request = axios.create({
@@ -68,6 +68,11 @@ request.interceptors.response.use(
     }
     // note: 判断 status 状态码，若为 401 说明权限不够，重新登陆
     if (error.response.status === 401) {
+      // note: 清除本地的数据
+      localStorage.clear()
+      sessionStorage.clear()
+      this.$store.commit("resetState")
+      // 跳转到登陆界面
       router.push("/login")
     }
     // note: 显示错误信息

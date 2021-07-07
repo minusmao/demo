@@ -25,7 +25,7 @@
               <el-dropdown-item @click.native="logout()">退出</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
-          <el-link href="https://github.com/TechRice" target="_blank">网站</el-link>
+          <el-link href="https://github.com/TechRice" target="_blank">Github>></el-link>
         </div>
       </el-header>
 
@@ -112,7 +112,7 @@ export default {
   /* note: 用户部分的样式 */
   .header-avatar{
     float: right;
-    width: 180px;
+    width: 220px;
     display: flex;
 		justify-content: space-around;
 		align-items: center;

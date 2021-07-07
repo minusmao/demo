@@ -25,11 +25,11 @@
           <el-input type="password" v-model="loginForm.password"></el-input>
         </el-form-item>
         <el-form-item label="验证码" prop="code" style="width: 380px">
-          <el-input v-model="loginForm.code" style="width: 170px; float: left"></el-input>
+          <el-input v-model="loginForm.code" style="width: 150px; float: left"></el-input>
           <el-image class="captchaImg" :src="captchaImg" @click="getCaptcha"></el-image>
         </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="submitForm('loginForm')">立即创建</el-button>
+          <el-button type="primary" @click="submitForm('loginForm')">立即登陆</el-button>
           <el-button @click="resetForm('loginForm')">重置</el-button>
         </el-form-item>
       </el-form>
@@ -39,6 +39,8 @@
 </template>
 
 <script>
+import qs from 'qs'    // 引入 qs 用于登陆时提交 form 表单
+
 export default {
   name: 'Login',
   data() {
@@ -75,7 +77,9 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           /* note: 前面为固定写法，在这里请求后台数据 */
-          this.$request.post('/login', this.loginForm).then(response => {
+          // 注意：后台用了 Spring Security，默认登陆使用 form 表单形式提交，所以这里不要使用 JSON 格式提交
+          // this.$request.post('/login', this.loginForm).then(response => {
+          this.$request.post('/login?' + qs.stringify(this.loginForm)).then(response => {
             // note: 登陆成功，后端返回 jwt 数据
             const jwt = response.headers['authorization']
             // note: 将 jwt 存入 store 中
@@ -83,6 +87,8 @@ export default {
             // note: 跳转页面
             this.$router.push('/index')
           })
+          // 重新获取验证码图片
+          this.getCaptcha()
         } else {
           console.log('error submit!!');
           return false;
@@ -106,15 +112,17 @@ export default {
             }
           }
       */
-      this.$request.post('/captcha').then(response => {
+      this.$request.get('/captcha').then(response => {
         // note: 后端返回 token 和 base64（验证码 code 的图片），并自己在 Redis 中存入 【token : code】 的键值对
         this.loginForm.token = response.data.data.token;
         this.captchaImg = response.data.data.captchaImg;
+        // 获取图片后顺便清空一下 code
+        this.loginForm.code = '';
       })
     }
   },
-  // note: 生命周期：页面生成时调用
-  created() {
+  // note: 生命周期：页面挂载完成时调用
+  mounted() {
     // 获取验证码图片
     this.getCaptcha()
   }

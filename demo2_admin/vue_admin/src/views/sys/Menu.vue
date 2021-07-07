@@ -61,6 +61,7 @@
 
 				<el-form-item label="上级菜单" prop="parentId">
 					<el-select v-model="editForm.parentId" placeholder="请选择上级菜单">
+            <el-option label="无" :value="0"></el-option>
 						<template v-for="item in tableData">
 							<el-option :label="item.name" :value="item.id" :key="item.id"></el-option>
 							<template v-for="child in item.children">
@@ -174,6 +175,7 @@ export default {
                 showClose: true,
                 message: '恭喜你，操作成功',
                 type: 'success',
+                duration: 1 * 1000,
                 // 关闭后重新获得数据
                 onClose:() => {
                   this.getMenuTree()
@@ -213,8 +215,9 @@ export default {
       this.$request.post("/sys/menu/delete/" + id).then(response => {
         this.$message({
           showClose: true,
-          message: '恭喜你，操作成功',
+          message: '恭喜你，删除成功',
           type: 'success',
+          duration: 1 * 1000,
           onClose:() => {
             this.getMenuTree()
           }

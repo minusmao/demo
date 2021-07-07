@@ -44,7 +44,7 @@
 			<el-table-column prop="username" label="用户名" width="120"></el-table-column>
 			<el-table-column prop="code" label="角色名称">
 				<template slot-scope="scope">
-					<el-tag size="small" type="info" v-for="item in scope.row.roles" :key="item.id">{{item.name}}</el-tag>
+					<el-tag size="small" type="info" v-for="item in scope.row.sysRoles" :key="item.id">{{item.name}}</el-tag>
 				</template>
 			</el-table-column>
 			<el-table-column prop="email" label="邮箱"></el-table-column>
@@ -210,9 +210,9 @@
 			getUserList() {
 				this.$request.get("/sys/user/list", {
 					params: {
-						username: this.searchForm.name,    // 行内表单的搜索框数据
-						current: this.current,             // 分页组件的第几页
-						size: this.size                    // 分页组件的每页数量
+						username: this.searchForm.username,    // 行内表单的搜索框数据
+						current: this.current,                 // 分页组件的第几页
+						size: this.size                        // 分页组件的每页数量
 					}
 				}).then(response => {
           // 后端返回的表格数据
@@ -271,7 +271,7 @@
 									}
 								});
                 // 重置表单
-								resetForm(formName)
+                this.resetForm(formName)
 							})
 					} else {
 						console.log('error submit!!');

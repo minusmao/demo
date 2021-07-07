@@ -20,7 +20,7 @@ Vue.prototype.$request = request    // 挂载 request 属性（axios 对象）
 Vue.config.productionTip = false
 
 /* note: 引入 mock 模块，关闭则注释该行 */
-require("./mock")                   // note: 随机数据框架，可拦截前端 ajax 请求，模拟后端响应，执行 "npm install mockjs --save-dev" 安装 
+// require("./mock")                   // note: 随机数据框架，可拦截前端 ajax 请求，模拟后端响应，执行 "npm install mockjs --save-dev" 安装 
 
 new Vue({
   router,
