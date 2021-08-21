@@ -51,7 +51,7 @@ mvn package               # step3: 打包项目
 java -jar fruit-0.0.1-SNAPSHOT.jar    # step4: 运行项目
 ```
 
-注：编译和运行可以直接运行 `mvn springboot:run`
+注：编译和运行可以直接运行 `mvn spring-boot:run`
 
 ## 4. 注意事项
 
