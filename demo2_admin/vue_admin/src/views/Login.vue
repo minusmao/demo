@@ -47,10 +47,10 @@ export default {
     return {
       // note: 表单数据
       loginForm: {
-        username: '',    // note: 用户名
-        password: '',    // note: 密码
-        code: '',        // nore: 验证码
-        token: ''        // note: 随机码（从后端获得，后端 Redis 中存了 【token : code】 的键值对）
+        username: 'admin',     // note: 用户名
+        password: '111111',    // note: 密码
+        code: '',              // nore: 验证码
+        token: ''              // note: 随机码（从后端获得，后端 Redis 中存了 【token : code】 的键值对）
       },
       // note: 输入校验
       rules: {
