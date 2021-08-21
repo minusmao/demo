@@ -59,3 +59,5 @@ java -jar admin-0.0.1-SNAPSHOT.jar    # step4: 运行项目
 * 项目中超级管理员 `admin` 用户的密码为 `111111`，重置密码的设定为 `com.example.admin.common.lang.DEFAULT_PASSWORD`，代码中写为 `888888`，可自行修改
 
 * 后端数据库为 `MySQL` 数据库，运行前先执行 `/sql` 目录下的 `SQL` 语句，并在 `application.yml` 文件中设置用户名和密码
+
+* 后端使用了 `Redis` 来缓存数据，所以启动后端前需要启动 `Redis` 服务，如下是 `Windows` 版的下载链接：https://github.com/tporadowski/redis
